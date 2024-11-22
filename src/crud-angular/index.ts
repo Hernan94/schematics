@@ -11,7 +11,7 @@ export function crudAngular(_options: any): Rule {
 
     const attributes = getAttributesFromClassOrInterface(_options.path, _tree);
     _options.cols = createColsArray(attributes);
-    _options.name = "luchina";
+   // _options.name = "test";
 
     console.log(_options)
 
@@ -72,7 +72,7 @@ function getAttributesFromClassOrInterface(filePath: string, tree: Tree): string
 function createColsArray(attributes: string[]): string {
   return `[
     ${attributes
-      .map(attr => `{ field: '${attr}', header: '${capitalize(attr)}' }`)
+      .map(attr => `{ field: '${attr}', header: '${capitalize(attr)}' , visible: ${attr !== 'id'} }`)
       .join(',\n    ')}
   ]`;
 }
